@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Player : MonoBehaviour, IKitchenObjectParent {
+public class Player : NetworkBehaviour, IKitchenObjectParent {
 
 
-    public static Player Instance { get; private set; }
+    //public static Player Instance { get; private set; }
 
 
 
@@ -30,10 +31,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 
 
     private void Awake() {
-        if (Instance != null) {
-            Debug.LogError("There is more than one Player instance");
-        }
-        Instance = this;
+        //Instance = this;
     }
 
     private void Start() {
