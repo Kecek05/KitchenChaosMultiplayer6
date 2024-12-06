@@ -512,7 +512,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: d6c00000
     m_LastClickedID: 49366
-    m_ExpandedIDs: 0000000010c00000
+    m_ExpandedIDs: 000000009afa0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -541,7 +541,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000010c00000
+    m_ExpandedIDs: 000000009afa0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1250,6 +1250,20 @@ MonoBehaviour:
       layout: 4
       size: {x: 0, y: 0}
       sizeOverridden: 0
+    - dockPosition: 1
+      containerId: overlay-container--right
+      displayed: 1
+      id: Network Visualization
+      index: 12
+      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
+      floating: 0
+      collapsed: 0
+      snapOffset: {x: 24, y: 0}
+      snapOffsetDelta: {x: 0, y: 0}
+      snapCorner: 0
+      layout: 4
+      size: {x: 0, y: 0}
+      sizeOverridden: 0
     m_ContainerData:
     - containerId: overlay-toolbar__top
       scrollOffset: 0
@@ -1277,7 +1291,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -5.4102697, y: 1.4054852, z: 3.2067738}
+    m_Target: {x: -1.4801539, y: 7.5052366, z: -5.461187}
     speed: 2
     m_Value: {x: -5.4102697, y: 1.4054852, z: 3.2067738}
   m_RenderMode: 0
@@ -1325,11 +1339,11 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.36005408, y: -0.279733, z: 0.11410956, w: -0.8826751}
+    m_Target: {x: -0.3367482, y: -0.041790403, z: 0.014966777, w: -0.9405635}
     speed: 2
     m_Value: {x: -0.36005408, y: -0.279733, z: 0.11410956, w: -0.8826751}
   m_Size:
-    m_Target: 10
+    m_Target: 1.3759563
     speed: 2
     m_Value: 10
   m_Ortho:
@@ -1615,7 +1629,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 10c00000
     m_LastClickedID: 49168
-    m_ExpandedIDs: 0000000010c00000
+    m_ExpandedIDs: 000000009afa0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1644,7 +1658,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000010c00000
+    m_ExpandedIDs: 000000009afa0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
