@@ -7,6 +7,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour
 
     public static KitchenGameMultiplayer Instance { get; private set; }
 
+    [SerializeField] private KitchenObjectListSO kitchenObjectListSO;
 
     private void Awake()
     {
@@ -17,12 +18,14 @@ public class KitchenGameMultiplayer : NetworkBehaviour
 
     public void SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent)
     {
-        SpawnKitchenObjectServerRpc(kitchenObjectSO, kitchenObjectParent);
+        SpawnKitchenObjectServerRpc(GetKitchenObjectSOIndex(kitchenObjectSO), kitchenObjectParent.GetNetworkObject());
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void SpawnKitchenObjectServerRpc(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent)
+    private void SpawnKitchenObjectServerRpc(int kitchenObjectSOIndex, NetworkObjectReference kitchenObjectParentNetworkObjectReference)
     {
+        KitchenObjectSO kitchenObjectSO = GetKitchenObjectSOFromIndex(kitchenObjectSOIndex);
+
         Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
 
         NetworkObject kitchenObjectNetworkObject = kitchenObjectTransform.GetComponent<NetworkObject>();
@@ -30,7 +33,20 @@ public class KitchenGameMultiplayer : NetworkBehaviour
 
         KitchenObject kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
 
+        kitchenObjectParentNetworkObjectReference.TryGet(out NetworkObject kitchenObjectParentNetworkObject);
+        IKitchenObjectParent kitchenObjectParent = kitchenObjectParentNetworkObject.GetComponent<IKitchenObjectParent>();
+
         kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
 
+    }
+
+    private int GetKitchenObjectSOIndex(KitchenObjectSO kitchenObjectSO)
+    {
+        return kitchenObjectListSO.kitchenObjectSOList.IndexOf(kitchenObjectSO);
+    }
+
+    private KitchenObjectSO GetKitchenObjectSOFromIndex(int kitchenObjectSOIndex)
+    {
+        return kitchenObjectListSO.kitchenObjectSOList[kitchenObjectSOIndex];
     }
 }
