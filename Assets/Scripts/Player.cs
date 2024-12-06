@@ -88,7 +88,6 @@ public class Player : NetworkBehaviour, IKitchenObjectParent {
             SetSelectedCounter(null);
         }
     }
-
     private void HandleMovement() {
         Vector2 inputVector = GameInput.Instance.GetMovementVectorNormalized();
 
