@@ -95,7 +95,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8529292057493577800, guid: c4e141bc61e807b4b832b850d92f5fd7,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1a0afd856a35421469b28b916116fd9c, type: 2}
     m_RemovedComponents: []
@@ -223,6 +223,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6469687145593214517, guid: ac964a67cdc32584aab07a6cd2fe1b21,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: -4643239126247237355}
+    - targetCorrespondingSourceObject: {fileID: 6469687145593214517, guid: ac964a67cdc32584aab07a6cd2fe1b21,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 5975593561060770033}
   m_SourcePrefab: {fileID: 100100000, guid: ac964a67cdc32584aab07a6cd2fe1b21, type: 3}
 --- !u!1 &7333252385162279237 stripped
@@ -231,6 +235,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4326833473816670064}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-4643239126247237355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333252385162279237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 140187800
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &5975593561060770033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47dd2d62d26fc534397d5ddb80580654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   counterTopPoint: {fileID: 7865281414882184778}
 --- !u!4 &7333252385162279239 stripped
 Transform:

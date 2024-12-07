@@ -251,7 +251,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2513651689412138050, guid: d72bee846803d074784ffb8f64e993ca,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1a0afd856a35421469b28b916116fd9c, type: 2}
     - target: {fileID: 4171094756720850327, guid: d72bee846803d074784ffb8f64e993ca,
@@ -346,12 +346,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6016978675324250517, guid: d72bee846803d074784ffb8f64e993ca,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1a0afd856a35421469b28b916116fd9c, type: 2}
     - target: {fileID: 7398771634956237162, guid: d72bee846803d074784ffb8f64e993ca,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1a0afd856a35421469b28b916116fd9c, type: 2}
     - target: {fileID: 8101788021821549737, guid: d72bee846803d074784ffb8f64e993ca,
@@ -503,6 +503,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6469687145593214517, guid: ac964a67cdc32584aab07a6cd2fe1b21,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 701066291537624180}
+    - targetCorrespondingSourceObject: {fileID: 6469687145593214517, guid: ac964a67cdc32584aab07a6cd2fe1b21,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2575188641521100930}
   m_SourcePrefab: {fileID: 100100000, guid: ac964a67cdc32584aab07a6cd2fe1b21, type: 3}
 --- !u!1 &2616519799646705744 stripped
@@ -511,6 +515,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9045282812655652453}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &701066291537624180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616519799646705744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2387419114
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &2575188641521100930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,6 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e92f4d33b30b54e956021f3e120d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   counterTopPoint: {fileID: 3219047973591527263}
   cuttingRecipeSOArray:
   - {fileID: 11400000, guid: 2ca750429db7304438f14b4f86ab748d, type: 2}

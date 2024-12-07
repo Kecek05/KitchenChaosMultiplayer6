@@ -188,6 +188,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6469687145593214517, guid: ac964a67cdc32584aab07a6cd2fe1b21,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: -6697282968049973013}
+    - targetCorrespondingSourceObject: {fileID: 6469687145593214517, guid: ac964a67cdc32584aab07a6cd2fe1b21,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1724869922291534794}
   m_SourcePrefab: {fileID: 100100000, guid: ac964a67cdc32584aab07a6cd2fe1b21, type: 3}
 --- !u!4 &7460543840647831896 stripped
@@ -202,6 +206,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4486112127764166511}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6697282968049973013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460543840647831898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1017660984
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &1724869922291534794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870ab78533943e4448b15305b146a6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   counterTopPoint: {fileID: 8028450213966386773}
   plateKitchenObjectSO: {fileID: 11400000, guid: c2b29260396631a4792f2e3e10773a1d,
     type: 2}
@@ -238,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 867046696110709345, guid: e21b499d164095947b7559f0267f0e63,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1a0afd856a35421469b28b916116fd9c, type: 2}
     - target: {fileID: 4472461010448373620, guid: e21b499d164095947b7559f0267f0e63,
