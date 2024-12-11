@@ -7,7 +7,7 @@ public class TestingNetcodeUI : MonoBehaviour
 
     [SerializeField] private Button startHostButton;
     [SerializeField] private Button startClientButton;
-
+    [SerializeField] private Button startServerButton;
 
     private void Awake()
     {
@@ -23,6 +23,13 @@ public class TestingNetcodeUI : MonoBehaviour
         {
             Debug.Log("CLIENT");
             NetworkManager.Singleton.StartClient();
+            Hide();
+        });
+
+        startServerButton.onClick.AddListener(() =>
+        {
+            Debug.Log("SERVER");
+            NetworkManager.Singleton.StartServer();
             Hide();
         });
     }

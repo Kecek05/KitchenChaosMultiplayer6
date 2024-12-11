@@ -53,10 +53,15 @@ public class StoveCounter : BaseCounter, IHasProgress {
     private void BurningTimer_OnValueChanged(float previousValue, float newValue)
     {
         float burningTimerMax = burningRecipeSO != null ? burningRecipeSO.burningTimerMax : 1f;
-        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+
+        if (state.Value != State.Burned)
         {
-            progressNormalized = burningTimer.Value / burningTimerMax
-        });
+            OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+            {
+                progressNormalized = burningTimer.Value / burningTimerMax
+            });
+
+        }
     }
 
 
