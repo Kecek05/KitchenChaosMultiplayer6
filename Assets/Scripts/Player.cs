@@ -141,8 +141,11 @@ public class Player : NetworkBehaviour, IKitchenObjectParent {
 
         isWalking = moveDir != Vector3.zero;
 
-        float rotateSpeed = 10f;
-        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+        if (moveDir != Vector3.zero)
+        {
+            float rotateSpeed = 10f;
+            transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+        }
     }
 
     private void SetSelectedCounter(BaseCounter selectedCounter) {
