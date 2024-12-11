@@ -21,49 +21,17 @@ public class HostDisconectUI : MonoBehaviour
 
         NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
 
-            //NetworkManager.Singleton.OnConnectionEvent += NetworkManager_OnConnectionEvent;
-
         Hide();
     }
 
 
     private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
     {
-        print(clientId);
 
-        if (clientId == NetworkManager.ServerClientId)
-        {
-            //Host disconnected
+        if(this != null)
             Show();
-            print("Host Disconected");
-        }
+            //Host disconnected
     }
-
-    //private void NetworkManager_OnConnectionEvent(NetworkManager arg1, ConnectionEventData arg2)
-    //{
-    //    if (arg2.EventType.Equals(ConnectionEvent.ClientDisconnected))
-    //    {
-    //        // Disconnected
-    //        if (arg2.ClientId == NetworkManager.ServerClientId && this != null)
-    //        {
-    //            //Host disconnected
-    //            HostDisconnectedServerRpc();
-    //            print("Disconected");
-    //        }
-    //    }
-    //}
-
-        //[ServerRpc]
-        //private void HostDisconnectedServerRpc()
-        //{
-        //    HostDisconnectedClientRpc();
-        //}
-
-        //[ClientRpc]
-        //private void HostDisconnectedClientRpc()
-        //{
-        //    Show();
-        //}
 
     private void Show()
     {
