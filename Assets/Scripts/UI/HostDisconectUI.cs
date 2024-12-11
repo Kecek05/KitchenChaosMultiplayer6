@@ -1,8 +1,9 @@
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
+using QFSW.QC;
 
-public class HostDisconectUI : NetworkBehaviour
+public class HostDisconectUI : MonoBehaviour
 {
 
     [SerializeField] private Button playAgainButton;
@@ -17,13 +18,14 @@ public class HostDisconectUI : NetworkBehaviour
 
     private void Start()
     {
-        if(IsServer)
-            NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
+
+        NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
 
             //NetworkManager.Singleton.OnConnectionEvent += NetworkManager_OnConnectionEvent;
 
         Hide();
     }
+
 
     private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
     {
@@ -33,7 +35,7 @@ public class HostDisconectUI : NetworkBehaviour
         {
             //Host disconnected
             Show();
-            print("Disconected");
+            print("Host Disconected");
         }
     }
 
