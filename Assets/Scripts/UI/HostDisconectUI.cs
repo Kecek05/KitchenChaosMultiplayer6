@@ -2,6 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 using QFSW.QC;
+using System;
 
 public class HostDisconectUI : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class HostDisconectUI : MonoBehaviour
 
     private void Awake()
     {
-        playAgainButton.onClick.AddListener(() => {
+        playAgainButton.onClick.AddListener(() =>
+        {
             NetworkManager.Singleton.Shutdown();
             Loader.Load(Loader.Scene.MainMenuScene);
         });
@@ -18,7 +20,6 @@ public class HostDisconectUI : MonoBehaviour
 
     private void Start()
     {
-
         NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
 
         Hide();
@@ -28,9 +29,12 @@ public class HostDisconectUI : MonoBehaviour
     private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
     {
 
-        if(this != null)
-            Show();
+        if(clientId == NetworkManager.ServerClientId)
+        {
             //Host disconnected
+            Show();
+
+        }
     }
 
     private void Show()

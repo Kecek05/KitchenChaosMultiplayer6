@@ -4915,7 +4915,7 @@ PrefabInstance:
     - target: {fileID: 4845276930943762971, guid: 2da3dcc22749e7f4280737786d898334,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 4845637959249703711, guid: 2da3dcc22749e7f4280737786d898334,
         type: 3}
@@ -9777,7 +9777,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 33a1247e72f568a4cb001bc25adafe0d, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
-    ConnectionApproval: 0
+    ConnectionApproval: 1
     ConnectionData: 
     EnableTimeResync: 0
     TimeResyncInterval: 30
@@ -19291,6 +19291,7 @@ SceneRoots:
   - {fileID: 1021733162}
   - {fileID: 2094929314}
   - {fileID: 2029274087}
+  - {fileID: 1995823026}
   - {fileID: 899323462}
   - {fileID: 1309242919}
   - {fileID: 1509564505}
@@ -19299,4 +19300,3 @@ SceneRoots:
   - {fileID: 600760493}
   - {fileID: 1178522476}
   - {fileID: 692176880}
-  - {fileID: 1995823026}

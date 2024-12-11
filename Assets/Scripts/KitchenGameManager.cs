@@ -166,6 +166,11 @@ public class KitchenGameManager : NetworkBehaviour {
         }
     }
 
+    public bool IsWaitingToStart()
+    {
+        return state.Value == State.WaitingToStart;
+    }
+
     public bool IsGamePlaying() {
         return state.Value == State.GamePlaying;
     }
