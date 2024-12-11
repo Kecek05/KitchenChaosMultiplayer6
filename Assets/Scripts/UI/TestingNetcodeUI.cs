@@ -18,7 +18,6 @@ public class TestingNetcodeUI : MonoBehaviour
             Hide();
         });
 
-
         startClientButton.onClick.AddListener(() =>
         {
             Debug.Log("CLIENT");

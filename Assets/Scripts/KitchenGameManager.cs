@@ -36,6 +36,7 @@ public class KitchenGameManager : NetworkBehaviour {
     private NetworkVariable<bool> isGamePaused = new(false);
     private Dictionary<ulong, bool> playerReadyDictionary;
     private Dictionary<ulong , bool> playerPausedDictionary;
+    private bool autoTestGamePaused = false;
 
     private void Awake() {
         Instance = this;
@@ -53,7 +54,26 @@ public class KitchenGameManager : NetworkBehaviour {
     {
         state.OnValueChanged += State_OnValueChanged;
         isGamePaused.OnValueChanged += IsGamePaused_OnValueChanged;
+
+        if(IsServer)
+            NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
+            //NetworkManager.Singleton.OnConnectionEvent += NetworkManager_OnConnectionEvent;
     }
+
+    private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
+    {
+        autoTestGamePaused = true;
+    }
+
+
+
+    //private void NetworkManager_OnConnectionEvent(NetworkManager arg1, ConnectionEventData arg2)
+    //{
+    //    if (arg2.EventType.Equals(ConnectionEvent.ClientDisconnected) && this != null)
+    //    {
+    //        autoTestGamePaused = true;
+    //    }
+    //}
 
     private void IsGamePaused_OnValueChanged(bool previousValue, bool newValue)
     {
@@ -133,6 +153,16 @@ public class KitchenGameManager : NetworkBehaviour {
                 break;
             case State.GameOver:
                 break;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if(autoTestGamePaused)
+        {
+            //need to test after the disconection
+            autoTestGamePaused = false;
+            TestGamePausedState();
         }
     }
 
