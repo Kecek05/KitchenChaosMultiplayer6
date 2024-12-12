@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KitchenGameManager : NetworkBehaviour {
 
@@ -26,6 +27,7 @@ public class KitchenGameManager : NetworkBehaviour {
         GameOver,
     }
 
+    [SerializeField] private GameObject playerPrefab; 
 
     private NetworkVariable<State> state = new(State.WaitingToStart);
     private bool isLocalPlayerReady = false;
@@ -56,24 +58,25 @@ public class KitchenGameManager : NetworkBehaviour {
         isGamePaused.OnValueChanged += IsGamePaused_OnValueChanged;
 
         if(IsServer)
+        {
             NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
-            //NetworkManager.Singleton.OnConnectionEvent += NetworkManager_OnConnectionEvent;
+            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted;
+        }
+    }
+
+    private void SceneManager_OnLoadEventCompleted(string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
+    {
+        foreach(ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
+        {
+            GameObject playerObject = Instantiate(playerPrefab);
+            playerObject.transform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
+        }
     }
 
     private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
     {
         autoTestGamePaused = true;
     }
-
-
-
-    //private void NetworkManager_OnConnectionEvent(NetworkManager arg1, ConnectionEventData arg2)
-    //{
-    //    if (arg2.EventType.Equals(ConnectionEvent.ClientDisconnected) && this != null)
-    //    {
-    //        autoTestGamePaused = true;
-    //    }
-    //}
 
     private void IsGamePaused_OnValueChanged(bool previousValue, bool newValue)
     {
@@ -125,7 +128,6 @@ public class KitchenGameManager : NetworkBehaviour {
         {
             state.Value = State.CountdownToStart;
         }
-        Debug.Log("All clients ready: " + allClientsReady);
     }
 
     private void GameInput_OnPauseAction(object sender, EventArgs e) {
