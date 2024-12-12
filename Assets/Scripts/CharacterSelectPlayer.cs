@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class CharacterSelectPlayer : MonoBehaviour
     [SerializeField] private GameObject readyGameObject;
     [SerializeField] private PlayerVisual playerVisual;
     [SerializeField] private Button kickButton;
+    [SerializeField] private TextMeshPro playerNameText;
 
     private void Awake()
     {
@@ -16,6 +18,7 @@ public class CharacterSelectPlayer : MonoBehaviour
         {
 
             PlayerData playerData = KitchenGameMultiplayer.Instance.GetPlayerDataFromIndex(playerIndex);
+            KitchenGameLobby.Instance.KickPlayer(playerData.playerId.ToString());
             KitchenGameMultiplayer.Instance.KickPlayer(playerData.clientId);
         });
     }
@@ -50,6 +53,8 @@ public class CharacterSelectPlayer : MonoBehaviour
             readyGameObject.SetActive(CharacterSelectReady.Instance.IsPlayerReady(playerData.clientId));
 
             playerVisual.SetPlayerColor(KitchenGameMultiplayer.Instance.GetPlayerColor(playerData.colorId));
+
+            playerNameText.text = playerData.playerName.ToString();
 
             if (playerData.clientId == NetworkManager.ServerClientId) // Host cant self kick
                 kickButton.gameObject.SetActive(false);
