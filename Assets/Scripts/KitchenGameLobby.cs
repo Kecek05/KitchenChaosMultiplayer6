@@ -7,6 +7,13 @@ using System.Collections;
 using Unity.Networking.Transport;
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using Unity.Services.Relay;
+using Unity.Services.Relay.Models;
+using System.Threading.Tasks;
+using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
+using Unity.Networking.Transport.Relay;
 
 public class KitchenGameLobby : MonoBehaviour
 {
@@ -61,7 +68,7 @@ public class KitchenGameLobby : MonoBehaviour
     {
         while(true)
         {
-            if(joinedLobby == null && AuthenticationService.Instance.IsSignedIn)
+            if(joinedLobby == null && AuthenticationService.Instance.IsSignedIn && SceneManager.GetActiveScene().name == Loader.Scene.LobbyScene.ToString())
             {
                 yield return new WaitForSeconds(1f);
                 ListLobbies();
@@ -123,6 +130,24 @@ public class KitchenGameLobby : MonoBehaviour
 
     }
 
+    private async Task<Allocation> AllocateRelay()
+    {
+        try
+        {
+            Allocation allocation = await RelayService.Instance.CreateAllocationAsync(KitchenGameMultiplayer.MAX_PLAYER_AMOUNT - 1);
+
+            return allocation;
+        }
+        catch (RelayServiceException e)
+        {
+            Debug.LogError(e);
+
+            return default;
+        }
+
+        
+    }
+
 
     public async void CreateLobby(string lobbyName, bool isPrivate)
     {
@@ -133,6 +158,10 @@ public class KitchenGameLobby : MonoBehaviour
             {
                 IsPrivate = isPrivate,
             });
+
+            Allocation allocation = await AllocateRelay();
+
+           //NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(lobbyName    ;
 
             KitchenGameMultiplayer.Instance.StartHost();
             Loader.LoadNetwork(Loader.Scene.CharacterSelectScene);
