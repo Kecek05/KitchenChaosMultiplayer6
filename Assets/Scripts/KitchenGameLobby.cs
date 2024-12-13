@@ -55,8 +55,6 @@ public class KitchenGameLobby : MonoBehaviour
         {
             InitializationOptions initializationOptions = new InitializationOptions();
 
-            initializationOptions.SetProfile(UnityEngine.Random.Range(0, 10000).ToString());
-
             await UnityServices.InitializeAsync(initializationOptions);
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
