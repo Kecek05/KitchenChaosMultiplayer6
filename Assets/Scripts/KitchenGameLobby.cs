@@ -231,12 +231,13 @@ public class KitchenGameLobby : MonoBehaviour
 
             JoinAllocation joinAllocation = await JoinRelay(relayJoinCode);
 
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetClientRelayData(
                 joinAllocation.RelayServer.IpV4,
                 (ushort)joinAllocation.RelayServer.Port,
                 joinAllocation.AllocationIdBytes,
                 joinAllocation.Key,
-                joinAllocation.ConnectionData
+                joinAllocation.ConnectionData,
+                joinAllocation.HostConnectionData
 
             );
 
@@ -261,12 +262,13 @@ public class KitchenGameLobby : MonoBehaviour
 
             JoinAllocation joinAllocation = await JoinRelay(relayJoinCode);
 
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetClientRelayData(
                 joinAllocation.RelayServer.IpV4,
                 (ushort)joinAllocation.RelayServer.Port,
                 joinAllocation.AllocationIdBytes,
                 joinAllocation.Key,
-                joinAllocation.ConnectionData
+                joinAllocation.ConnectionData,
+                joinAllocation.HostConnectionData
 
             );
 
@@ -290,14 +292,15 @@ public class KitchenGameLobby : MonoBehaviour
 
             JoinAllocation joinAllocation = await JoinRelay(relayJoinCode);
 
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
-                joinAllocation.RelayServer.IpV4,
-                (ushort)joinAllocation.RelayServer.Port,
-                joinAllocation.AllocationIdBytes,
-                joinAllocation.Key,
-                joinAllocation.ConnectionData
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetClientRelayData(
+                 joinAllocation.RelayServer.IpV4,
+                 (ushort)joinAllocation.RelayServer.Port,
+                 joinAllocation.AllocationIdBytes,
+                 joinAllocation.Key,
+                 joinAllocation.ConnectionData,
+                 joinAllocation.HostConnectionData
 
-            );
+             );
 
 
             KitchenGameMultiplayer.Instance.StartClient();
