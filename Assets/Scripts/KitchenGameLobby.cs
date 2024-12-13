@@ -71,8 +71,8 @@ public class KitchenGameLobby : MonoBehaviour
         {
             if(joinedLobby == null && AuthenticationService.Instance.IsSignedIn && SceneManager.GetActiveScene().name == Loader.Scene.LobbyScene.ToString())
             {
-                yield return new WaitForSeconds(1f);
                 ListLobbies();
+                yield return new WaitForSeconds(1f);
             } else
             {
                 yield return null;
@@ -87,9 +87,9 @@ public class KitchenGameLobby : MonoBehaviour
         {
             if (IsLobbyHost() && SceneManager.GetActiveScene().name == Loader.Scene.LobbyScene.ToString())
             {
-                yield return new WaitForSeconds(15f);
 
                 LobbyService.Instance.SendHeartbeatPingAsync(joinedLobby.Id);
+                yield return new WaitForSeconds(15f);
 
             } else
             {
@@ -116,7 +116,6 @@ public class KitchenGameLobby : MonoBehaviour
             };
 
             QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync(queryLobbiesOptions);
-
             OnLobbyListChanged?.Invoke(this, new OnLobbyListChangedEventArgs
             {
                 lobbyList = queryResponse.Results
@@ -183,10 +182,23 @@ public class KitchenGameLobby : MonoBehaviour
         OnCreateLobbyStarted?.Invoke(this, EventArgs.Empty);
         try
         {
-            joinedLobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, KitchenGameMultiplayer.MAX_PLAYER_AMOUNT, new CreateLobbyOptions
+            if(lobbyName == "")
             {
-                IsPrivate = isPrivate,
-            });
+                //No name input
+                joinedLobby = await LobbyService.Instance.CreateLobbyAsync(KitchenGameMultiplayer.Instance.GetPlayerName() + "'s Lobby", KitchenGameMultiplayer.MAX_PLAYER_AMOUNT, new CreateLobbyOptions
+                {
+                    IsPrivate = isPrivate,
+                });
+
+            } else
+            {
+                joinedLobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, KitchenGameMultiplayer.MAX_PLAYER_AMOUNT, new CreateLobbyOptions
+                {
+                    IsPrivate = isPrivate,
+                });
+            }
+
+          
 
             Allocation allocation = await AllocateRelay();
 
