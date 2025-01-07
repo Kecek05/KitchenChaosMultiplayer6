@@ -180,7 +180,6 @@ public class KitchenGameMultiplayer : NetworkBehaviour
 
 
         kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
-
     }
 
     public int GetKitchenObjectSOIndex(KitchenObjectSO kitchenObjectSO)
